@@ -1,0 +1,56 @@
+
+/*Pongo espacio para que el login quede en el medio pequeño*/
+body{
+    padding: 5% 35% 0% 35%;
+    background-image: url("../Imagenes/fondoBodyLogin.jpg")
+}
+#containerPrincipal{
+    width: 100%;
+    padding: 15% 10% 20% 10%;
+    background-color: #c8fdff73;
+    border-radius: 1%;
+}
+
+#contrasena{
+    margin-bottom: 5%;
+}
+
+#tituloInicioSession{
+    font-size: 2em;
+}
+
+#linkContrasenaOlvidada{
+    margin-top: 10%;
+    color: black;
+}
+
+/*Cambio el icono para que el usuario sepa que puede clickar*/
+#linkContrasenaOlvidada:hover{
+    cursor: pointer; 
+}
+
+#icon{
+    width: 30%;
+}
+
+.formulariosInvisibles{
+    display: none;
+}
+
+/*Creo una classe para crear un pequeño espacio entre las rows*/
+.top-buffer { margin-top:20px; }
+
+/* Esta parte se usa para posicionar el icono dentro del input*/
+.inner-addon { 
+    position: relative; 
+}
+.inner-addon .fas {
+  position: absolute;
+  padding: 10px;
+  pointer-events: none;
+}
+.left-addon .fas  { left:  0px;}
+.right-addon .fas { right: 0px;}
+.left-addon input  { padding-left:  30px; }
+.right-addon input { padding-right: 30px; }
+/*------*/

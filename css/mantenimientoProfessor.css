@@ -1,0 +1,42 @@
+
+body { padding-top: 70px; 
+	background-color: #E7E7E7}
+/* MAIN */
+	a:hover{
+		text-decoration: none;
+    }
+    
+/*Creo una classe para crear un pequeño espacio entre las rows*/
+.top-buffer { margin-top:20px; }
+
+#containerMenuOpciones{
+    padding: 0%;
+}
+
+ /* Cambio los botones para que permanezcan en color */
+ .btnOpciones {
+	border: none;
+	outline: none;
+	padding: 10px 16px;
+	background-color: #f1f1f1;
+	cursor: pointer;
+  }
+  
+  /* Style the active class (and buttons on mouse-over) */
+  .active, .btnOpciones:hover {
+	background-color: #666;
+	color: white;
+	} 	
+	
+	.divsOpciones{
+		display: none;
+	}
+
+	.nombreModul{
+		background-color: #337ab7;
+	}
+
+	/* Muevo los botones hacia abajo para mejor diseño*/
+	#divBotonesMantenimientoModulos{
+		margin-top: 2%;
+	}

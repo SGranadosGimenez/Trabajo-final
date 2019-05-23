@@ -1,0 +1,87 @@
+<html lang="ES">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+		
+		<link rel="stylesheet" href="../css/bootstrap.css">
+		<link rel="stylesheet" href="../css/index.css">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+	</head>
+	<body onload="Alumno(); selectentrega(); printar() ">
+		<nav class="navbar navbar-default navbar-fixed-top">
+	   		<div class="container-fluid">
+	    	<!-- Brand and toggle get grouped for better mobile display -->
+	    		<div class="navbar-header">
+	      			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+		        		<span class="sr-only">Toggle navigation</span>
+		        		<span class="icon-bar"></span>
+		        		<span class="icon-bar"></span>
+		        		<span class="icon-bar"></span>
+	      			</button>
+	      			<h1 class="sr-only">EducaBasic</h1>
+	      			<a class="navbar-brand" href="mainAlumno.html">LOGO</a>
+	    		</div>
+	    		<!-- Collect the nav links, forms, and other content for toggling -->
+	    		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	      			<ul class="nav navbar-nav">
+	        			<li class="active">
+	        				<a href="informacionpersonal.html" id="user"><span class="sr-only">(current)</span></a>
+	        			</li>
+	        		</ul>
+	        		<div class="navbar-right configuracion">
+	        			<div class="dropdown">
+  							<button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+   								<span class="fas fa-wrench" id="herramienta"></span>
+ 							</button>
+						    <ul class="dropdown-menu" aria-labelledby="dLabel">
+						    	<li><a href="configuracion.html">Canviar contrsenya</a></li>
+						    	<li><a href="informacionpersonal.html">Informació personal</a></li>
+						    </ul>
+						</div>
+	        			<a onclick="cerrarsession()" id="menuu"><span class="fas fa-power-off" id="cerrar"></span></a>
+	        		</div>
+	        	</div><!-- /.navbar-collapse -->
+  			</div><!-- /.container-fluid -->
+		</nav>
+		<ol class="breadcrumb">
+			<li><a href="mainAlumno.html"><span class="glyphicon glyphicon-home"><p class="sr-only">Home</p></span></a></li>
+		  	<li class="active">Entrega</li>
+		</ol>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-9 ">
+					<h2 class="text-center">ENTREGA DE TREBALLS</h2><br>
+					<!-- Bloque prinicipal para printar todas las entregas activas -->
+					<form action="../php/index.php" method="POST">
+							<select class="form-control" id="seleccionarentregas" onchange="Printarentregas()"> <!-- Select disabled id="disabledSelect"-->
+
+					      	</select>
+					</form>
+					<br>
+					<div id="printar"></div>
+					<!--  -->
+				</div>
+				<div class="col-md-3 hidden-sm hidden-xs">
+					<br><br><br><br>
+					<div class="panel panel-primary">
+						<div class="panel-heading">
+							<p class="text-center panel-title">Calendari</p>
+						</div>
+						<div class="panel-body" id="calendar">
+							<div class="responsiveCal" >
+					   			<iframe src="https://calendar.google.com/calendar/embed?height=400&amp;wkst=2&amp;bgcolor=%234285F4&amp;ctz=Europe%2FMadrid&amp;src=dnRzYWV6YkBnbWFpbC5jb20&amp;src=YWRkcmVzc2Jvb2sjY29udGFjdHNAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&amp;src=M3Rxa3BjbDNvbHBhZG0ycW5vNm5wMjNnczRAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;src=N21mdXBuMHUzYWhyOTdza3BwazVsNDc0YmdAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;src=azJqazI2a2lrbm84ZTM0c2Jsb2gxYzBrajBAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;src=ZXMuc3BhaW4jaG9saWRheUBncm91cC52LmNhbGVuZGFyLmdvb2dsZS5jb20&amp;src=anZpbGFkb21zLmNhdF9vYTRnMzJyZWh1Y2QxNjRpZGZ0dXJqbDFtY0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t&amp;color=%23F6BF26&amp;color=%237986CB&amp;color=%239E69AF&amp;color=%237986CB&amp;color=%23795548&amp;color=%23009688&amp;color=%23D50000&amp;showTitle=0&amp;showNav=0&amp;showDate=0&amp;showPrint=0&amp;showTabs=0&amp;showCalendars=0&amp;showTz=0&amp;title&amp;mode=AGENDA" style="border-width:0" width="600" height="400" frameborder="0" scrolling="no"></iframe>
+					   		</div>
+					  	</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<footer>
+			
+		</footer>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<script src="../js/bootstrap.min.js"></script>
+		<script src="../js/ScriptAlumno.js"></script>
+	</body>
+</html>

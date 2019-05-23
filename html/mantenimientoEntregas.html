@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Manteniment d'entreges</title>
+</head>
+<body>
+    <html lang="ES">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+		
+		<link rel="stylesheet" href="../css/bootstrap.css">
+		<link rel="stylesheet" href="../css/mantenimientoEntregas.css">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d40M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+	</head>
+	<body>
+        <?php
+            include "../php/checkSessions.php";
+
+            comprovarAdmin();
+        ?>
+		<nav class="navbar navbar-default navbar-fixed-top">
+	   		<div class="container-fluid">
+	    	<!-- Brand and toggle get grouped for better mobile display -->
+	    		<div class="navbar-header">
+	      			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+		        		<span class="sr-only">Toggle navigation</span>
+		        		<span class="icon-bar"></span>
+		        		<span class="icon-bar"></span>
+		        		<span class="icon-bar"></span>
+	      			</button>
+	      			<h1 class="sr-only">EducaBasic</h1>
+	      			<a class="navbar-brand" href="panelControlAdmin.html">LOGO</a>
+	    		</div>
+	    		<!-- Collect the nav links, forms, and other content for toggling -->
+	    		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	      			<ul class="nav navbar-nav">
+	        			<li class="active">
+	        				<a href="#info_personal">Paco Lorenzo <span class="sr-only">(current)</span></a>
+	        			</li>
+	        		</ul>
+	        	</div><!-- /.navbar-collapse -->
+  			</div><!-- /.container-fluid -->
+		</nav><br><br>
+    
+        <div class="row text-center">
+            <form action="">
+                <select id="accionRealizar">
+                    <option value="crear">Crear entrega</option>
+                    <option value="modificar">Modificar entrega</option>
+                    <option value="ver">Ver entrega</option>
+                    <option value="eliminar">Eliminar entrega</option>
+                </select>
+                <button type="button" class="btn btn-default" onclick="seleccionarAccion()">Seleccionar accion</button>
+            </form>    
+        </div>
+            <div class="row">
+                <form action="">
+                    <fieldset disabled="disabled" id="fieldSetSeleccionModul">
+                            <div class="form-group col-sm-12 text-center">
+                                <select id="modulEscogido"></select>
+                                <button type="button" class="btn btn-default" onclick="seleccionarModul()">Seleccionar modul</button>
+                            </div>
+                    </fieldset>
+                    
+                    <fieldset disabled="disabled" id="fieldSetSeleccionEntrega">
+                        <div class="form-group col-sm-12 text-center">
+                            <select id="entregaEscogida"></select>
+                            <button type="button" class="btn btn-default" onclick="seleccionarEntrega()">Seleccionar entrega</button>
+                        </div>
+                    </fieldset>
+                    <fieldset disabled="disabled" id="fieldSetInputs">
+
+                        <div class="form-group col-sm-7 col-sm-push-3">
+                            <label for="inputNomEntrega">Nom</label>
+                            <input type="text" class="form-control" id="inputNomEntrega">
+                        </div>
+                        <div class="form-group col-sm-7 col-sm-push-3">
+                            <label for="inputDescripcioEntrega">Descripcio</label>
+                            <input type="text" class="form-control" id="inputDescripcioEntrega">
+                        </div>
+                        <div class="form-group col-sm-7 col-sm-push-3">
+                            <label for="inputDataInicialEntrega">Data inicial</label>
+                            <input type="date" class="form-control" id="inputDataInicialEntrega">
+                            <input type="time" class="form-control" id="inputHoraInicialEntrega">
+                        </div>
+                        <div class="form-group col-sm-7 col-sm-push-3">
+                            <label for="inputDataFinalEntrega">Data final</label>
+                            <input type="date" class="form-control" id="inputDataFinalEntrega">
+                            <input type="time" class="form-control" id="inputHoraFinalEntrega">
+                        </div>
+                        <div class="form-group col-sm-7 col-sm-push-3">
+                            <label for="inputDataEntregaEntrega">Data entrega</label>
+                            <input type="date" class="form-control" id="inputDataEntregaEntrega">
+                            <input type="time" class="form-control" id="inputHoraEntregaEntrega">
+                        </div>
+                        <div class="form-group col-sm-7 col-sm-push-3">
+                            <label for="inputArxiuAdjuntEntrega">Arxiu adjunt</label>
+                            <input type="file" class="form-control" id="inputArxiuAdjuntEntrega">
+                            <p id="ArchivoCargado"></p>
+                        </div>
+                        <div class="form-group col-sm-7 col-sm-push-3">
+                            <label for="inputValorActivitat">Valor activitat</label>
+                            <input type="number" class="form-control" id="inputValorActivitat">
+                        </div>
+
+                    </fieldset>
+                    <fieldset disabled="disabled" id="fieldSetButtonRealizarAccion">
+                        <div class="form-group col-sm-12 text-center">
+                            <button type="button" class="btn btn-default" onclick="realizarAccion()">Realizar accion</button>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+
+        <div class="row top-buffer"> 
+            
+        <div class="container-fluid" id="containerMenuOpciones">
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <fieldset disabled="disabled" id="fieldSetOpciones">
+                        <div id="divBotonesOpciones" class="text-center">
+                            <button class="btnOpciones" onclick="cargarArxiusCompartits()">Alumnes</button>
+                            <button class="btnOpciones" onclick="cargarAlumnos()">Evaluar</button>
+                        </div> 
+                    </fieldset>
+                </div>
+            </nav>
+
+            <!-- Div alumnes -->
+            <div class="row divsOpciones text-center" id="divAlumnosModul">
+                <div class="form-group col-sm-4 col-sm-offset-1">
+                    <label for="selectAlumnoModul">Alumnes modul:</label>
+                    <select class="form-control" id="selectAlumnoModul" multiple>
+                    </select>
+                </div> 
+                <div class="col-sm-2" id="divBotonesMantenimientoAssignatura">
+                    <button class="btn btn-default col-sm-12" onclick="anadirAlumno()">Afegir</button>
+                    <button class="btn btn-default col-sm-12" onclick="eliminarAlumno()">Borrar</button>
+                </div>
+                <div class="form-group col-sm-4">
+                    <label for="selectTotsAlumnos">Tots els alumnes:</label>
+                    <select class="form-control" id="selectTotsAlumnos" multiple>
+                        
+                    </select>
+                </div> 
+            </div>
+
+            <!-- Div evaluar -->
+            <div class="row divsOpciones text-center" id="divEvaluarAlumnes">
+                <div class="form-group col-sm-4 col-sm-offset-1">
+                    <label for="selectAlumnoModul">Alumnes modul:</label>
+                    <select class="form-control" id="selectAlumnoModul" multiple>
+                    </select>
+                </div> 
+                <div class="col-sm-2" id="divBotonesMantenimientoAssignatura">
+                    <button class="btn btn-default col-sm-12" onclick="anadirAlumno()">Afegir</button>
+                    <button class="btn btn-default col-sm-12" onclick="eliminarAlumno()">Borrar</button>
+                </div>
+                <div class="form-group col-sm-4">
+                    <label for="selectTotsAlumnos">Tots els alumnes:</label>
+                    <select class="form-control" id="selectTotsAlumnos" multiple>
+                        
+                    </select>
+                </div> 
+            </div>
+        </div>
+		<footer>
+			
+        </footer>
+        
+        <!-- 
+
+             Div de las entregas del modulo 
+            <div class="row divsOpciones text-center" id="divEntregasModul">
+                <button onclick="activarCrearEntrega(false)" class="btn btn-default col-sm-4 col-sm-offset-4" id="botonCrearEntrega">Crear entrega</button>
+                     bloque para crear entregas 
+                    <div id="divCrearEntrega" class="col-sm-9 col-sm-offset-2">
+                        <form action="" method="post">
+                            <div class="form-group">
+                                <label for="selectModul col-sm-7">Modul</label>
+                                <select name="" id="selectIdModul" class="form-control">
+                                    
+                                </select>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label for="inputNomEntrega">Nom</label>
+                                <input type="text" class="form-control" id="inputNomEntrega">
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label for="inputDescripcioEntrega">Descripcio</label>
+                                <input type="text" class="form-control" id="inputDescripcioEntrega">
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label for="inputDataInicialEntrega">Data inicial</label>
+                                <input type="date" class="form-control" id="inputDataInicialEntrega">
+                                <input type="time" class="form-control" id="inputHoraInicialEntrega">
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label for="inputDataFinalEntrega">Data final</label>
+                                <input type="date" class="form-control" id="inputDataFinalEntrega">
+                                <input type="time" class="form-control" id="inputHoraFinalEntrega">
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label for="inputDataEntregaEntrega">Data entrega</label>
+                                <input type="date" class="form-control" id="inputDataEntregaEntrega">
+                                <input type="time" class="form-control" id="inputHoraEntregaEntrega">
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label for="inputArxiuAdjuntEntrega">Arxiu adjunt</label>
+                                <input type="file" class="form-control" id="inputArxiuAdjuntEntrega">
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label for="inputValorActivitat">Valor activitat</label>
+                                <input type="number" class="form-control" id="inputValorActivitat">
+                            </div>
+
+                            <button type="button" class="btn btn-default col-sm-7 col-sm-offset-3" onclick="crearEntrega()">Crear</button>
+                        </form>
+                    </div>
+                    <br><br>
+                        Bloque prinicipal para printar todas las entregas 
+                    <div id="printar" class="col-sm-9 col-sm-offset-2"></div>
+            </div>
+
+        -->
+        
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="../js/bootstrap.min.js"></script>
+        <script src="../js/scriptMantenimientoEntregas.js"></script>
+	</body>
+</html>
+</body>
+</html>

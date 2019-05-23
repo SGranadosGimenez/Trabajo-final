@@ -1,0 +1,139 @@
+<html lang="ES">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+		
+		<link rel="stylesheet" href="../css/bootstrap.css">
+		<link rel="stylesheet" href="../css/index.css">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+	</head>
+	<body>
+		<nav class="navbar navbar-default navbar-fixed-top">
+	   		<div class="container-fluid">
+	    	<!-- Brand and toggle get grouped for better mobile display -->
+	    		<div class="navbar-header">
+	      			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+		        		<span class="sr-only">Toggle navigation</span>
+		        		<span class="icon-bar"></span>
+		        		<span class="icon-bar"></span>
+		        		<span class="icon-bar"></span>
+	      			</button>
+	      			<h1 class="sr-only">EducaBasic</h1>
+	      			<a class="navbar-brand" href="#">LOGO</a>
+	    		</div>
+	    		<!-- Collect the nav links, forms, and other content for toggling -->
+	    		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	      			<ul class="nav navbar-nav">
+	        			<li class="active">
+	        				<a href="#info_personal">Paco Lorenzo <span class="sr-only">(current)</span></a>
+	        			</li>
+	        		</ul>
+	        		<div class="navbar-right configuracion">
+	        			<div class="dropdown">
+  							<button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+   								<span class="fas fa-wrench" id="herramienta"></span>
+ 							</button>
+						    <ul class="dropdown-menu" aria-labelledby="dLabel">
+						    	<li><a href="configuracion.html">Canviar contrsenya</a></li>
+						    	<li><a href="informacionpersonal.html">Informació personal</a></li>
+						    </ul>
+						</div>
+	        			<a onclick="cerrarsession()" id="menuu"><span class="fas fa-power-off" id="cerrar"></span></a>
+	        		</div>
+	        	</div><!-- /.navbar-collapse -->
+  			</div><!-- /.container-fluid -->
+		</nav><br><br>
+		<div class="container-fluid">
+			<!--<div class="row">
+				<div class="col-sm-4">-->
+					<!-- Bloque que queda en la derecha que pondremos el Calendario .... -->
+					<!--<div class="panel panel-primary">
+						<div class="panel-heading">
+							<p class="text-center panel-title">Calendari</p>
+						</div>
+						<div class="panel-body text-center" id="calendar">
+							<div class="responsiveCal" >
+					   			<iframe src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=2&amp;bgcolor=%23D50000&amp;ctz=Europe%2FMadrid&amp;src=dnRzYWV6YkBnbWFpbC5jb20&amp;src=YWRkcmVzc2Jvb2sjY29udGFjdHNAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&amp;src=M3Rxa3BjbDNvbHBhZG0ycW5vNm5wMjNnczRAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;src=N21mdXBuMHUzYWhyOTdza3BwazVsNDc0YmdAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;src=azJqazI2a2lrbm84ZTM0c2Jsb2gxYzBrajBAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;src=ZXMuc3BhaW4jaG9saWRheUBncm91cC52LmNhbGVuZGFyLmdvb2dsZS5jb20&amp;src=anZpbGFkb21zLmNhdF9vYTRnMzJyZWh1Y2QxNjRpZGZ0dXJqbDFtY0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t&amp;color=%23F6BF26&amp;color=%237986CB&amp;color=%239E69AF&amp;color=%237986CB&amp;color=%23795548&amp;color=%23009688&amp;color=%23D50000&amp;showTitle=0&amp;showNav=0&amp;showDate=0&amp;showPrint=0&amp;showTabs=0&amp;showCalendars=0&amp;showTz=0" style="border-width:0" frameborder="0" scrolling="no">
+					   			</iframe>
+					  		</div>
+					  	</div>
+					</div>
+				</div>
+				<div class="col-sm-4">
+					<div class="panel panel-primary">
+						<div class="panel-heading">
+							<p class="text-center panel-title">Horari</p>
+						</div>
+						<div class="panel-body">
+					   		
+					  	</div>
+					</div>
+				</div>
+				<div class="col-sm-4">
+					<div class="panel panel-primary">
+						<div class="panel-heading">
+							<p class="text-center panel-title">Entregas</p>
+						</div>
+						<div class="panel-body text-center" id="calendar">
+							<div class="responisveCal">
+					   			<iframe src="https://calendar.google.com/calendar/embed?height=400&amp;wkst=2&amp;bgcolor=%234285F4&amp;ctz=Europe%2FMadrid&amp;src=dnRzYWV6YkBnbWFpbC5jb20&amp;src=YWRkcmVzc2Jvb2sjY29udGFjdHNAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&amp;src=M3Rxa3BjbDNvbHBhZG0ycW5vNm5wMjNnczRAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;src=N21mdXBuMHUzYWhyOTdza3BwazVsNDc0YmdAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;src=azJqazI2a2lrbm84ZTM0c2Jsb2gxYzBrajBAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;src=ZXMuc3BhaW4jaG9saWRheUBncm91cC52LmNhbGVuZGFyLmdvb2dsZS5jb20&amp;src=anZpbGFkb21zLmNhdF9vYTRnMzJyZWh1Y2QxNjRpZGZ0dXJqbDFtY0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t&amp;color=%23F6BF26&amp;color=%237986CB&amp;color=%239E69AF&amp;color=%237986CB&amp;color=%23795548&amp;color=%23009688&amp;color=%23D50000&amp;showTitle=0&amp;showNav=0&amp;showDate=0&amp;showPrint=0&amp;showTabs=0&amp;showCalendars=0&amp;showTz=0&amp;title&amp;mode=AGENDA" style="border-width:0" height="300" frameborder="0" scrolling="no"></iframe>
+					   		</div>
+					  	</div>
+					</div>
+				</div>
+			</div>-->
+			<!-- #3375EC -->
+			<div class="row">
+				<div class="col-md-10 col-md-offset-1">
+					<!-- Bloque principal donde van los enlaces de entrega, archivos compartidos etc.... -->
+					<div class="row" id="bloqueprincipal">
+						<div class="col-xs-1">
+							
+						</div>
+						<div class="col-xs-2 text-center center-block cuadro">
+							<a href="entrega.html"><h3 class="text-primary">Entregas</h3>
+							<img src="../Imagenes/entrega.svg" alt="imatge per entregas"></a>
+						</div>
+						<div class="col-xs-2">
+							
+						</div>
+						<div class="col-xs-2 text-center center-block cuadro">
+							<a href="#"><h3 class="text-primary">Calendari</h3>
+							<img src="../Imagenes/calendari.svg" alt="foto de calendari"></a>
+						</div>
+						<div class="col-xs-2">
+							
+						</div>
+						<div class="col-xs-2 text-center center-block cuadro">
+							<a href="#"><h3 class="text-primary">Expedient</h3>
+							<img src="../Imagenes/award.svg" alt="expedient foto"></a>
+						</div>
+					</div>
+					<br><br><br>
+					<div class="row" id="bloqueprincipal">
+						<div class="col-xs-1"></div>
+						<div class="col-xs-2 text-center center-block cuadro">
+							<a href="materia.html"><h3 class="text-primary">Matèries</h3>
+							<img src="../Imagenes/materia.svg" alt="imatge de matèries"></a>
+						</div>
+						<div class="col-xs-2"></div>
+						<div class="col-xs-2 text-center center-block cuadro">
+							<a href="arxius.html"><h3 class="text-primary">Suro</h3>
+							<img src="../Imagenes/bag.svg" alt="imatge pel suro"></a>
+						</div>
+						<div class="col-xs-2"></div>
+						<div class="col-xs-2 text-center center-block cuadro">
+							<a href="#"><h3 class="text-primary">Horari</h3>
+							<img src="../Imagenes/horari.svg" alt="imatge per el horari"></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<footer>
+			
+		</footer>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<script src="../js/bootstrap.min.js"></script>
+	</body>
+</html>

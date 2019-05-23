@@ -1,0 +1,222 @@
+<html lang="ES">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+		
+		<link rel="stylesheet" href="../css/bootstrap.css">
+		<link rel="stylesheet" href="../css/mantenimientoProfessor.css">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d40M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+	</head>
+	<body>
+        <?php
+            include "../php/checkSessions.php";
+
+            comprovarAdmin();
+        ?>
+		<nav class="navbar navbar-default navbar-fixed-top">
+	   		<div class="container-fluid">
+	    	<!-- Brand and toggle get grouped for better mobile display -->
+	    		<div class="navbar-header">
+	      			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+		        		<span class="sr-only">Toggle navigation</span>
+		        		<span class="icon-bar"></span>
+		        		<span class="icon-bar"></span>
+		        		<span class="icon-bar"></span>
+	      			</button>
+	      			<h1 class="sr-only">EducaBasic</h1>
+	      			<a class="navbar-brand" href="panelControlAdmin.html">LOGO</a>
+	    		</div>
+	    		<!-- Collect the nav links, forms, and other content for toggling -->
+	    		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	      			<ul class="nav navbar-nav">
+	        			<li class="active">
+	        				<a href="#info_personal">Paco Lorenzo <span class="sr-only">(current)</span></a>
+	        			</li>
+	        		</ul>
+	        	</div><!-- /.navbar-collapse -->
+  			</div><!-- /.container-fluid -->
+		</nav><br><br>
+    
+        <div class="row text-center">
+            <form action="">
+                <select id="accionRealizar">
+                    <option value="crear">Crear professor</option>
+                    <option value="modificar">Modificar professor</option>
+                    <option value="ver">Ver professor</option>
+                    <option value="eliminar">Eliminar professor</option>
+                </select>
+                <button type="button" class="btn btn-default" onclick="seleccionarAccion()">Seleccionar accion</button>
+            </form>    
+        </div>
+            <div class="row">
+                <form action="">
+                    <fieldset disabled="disabled" id="fieldSetSeleccionProfessor">
+                        <div class="form-group col-sm-12 text-center">
+                            <select id="professorEscogido"></select>
+                            <button type="button" class="btn btn-default" onclick="seleccionarProfessor()">Seleccionar professor</button>
+                        </div>
+                    </fieldset>
+                    <fieldset disabled="disabled" id="fieldSetInputs">
+
+                        <div class="form-group col-sm-7 col-sm-push-3">
+                            <label for="inputUsuari">Usuari</label>
+                            <input type="text" class="form-control" id="inputUsuari">
+                        </div>
+
+                        <div class="form-group col-sm-7 col-sm-push-3">
+                            <label for="inputContrasenya">Contrasenya</label>
+                            <input type="text" class="form-control" id="inputContrasenya">
+                        </div>
+
+                        <div class="form-group col-sm-7 col-sm-push-3">
+                            <label for="inputCodificado">Codificar contraseña</label>
+                            <input type="text" class="form-control col-sm-4" id="inputCodificado">
+                            <button type="button" class="btn btn-default" onclick="codificar()">Codificar</button>
+                        </div>
+
+                        <div class="form-group col-sm-7 col-sm-push-3">
+                            <label for="inputNom">Nom</label>
+                            <input type="text" class="form-control" id="inputNom">
+                        </div>
+
+                        <div class="form-group col-sm-7 col-sm-push-3">
+                            <label for="inputPrimerCognom">Primer Cognom</label>
+                            <input type="text" class="form-control" id="inputPrimerCognom">
+                        </div>
+
+                        <div class="form-group col-sm-7 col-sm-push-3">
+                            <label for="inputSegonCognom">Segon Cognom</label>
+                            <input type="text" class="form-control" id="inputSegonCognom">
+                        </div>
+
+                        <div class="form-group col-sm-7 col-sm-push-3">
+                            <label for="selectSexe">Sexe</label>
+                            <select id="selectSexe" class="form-control">
+                                <option value="home">Home</option>
+                                <option value="dona">Dona</option>
+                                <option value="altres">Altres</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group col-sm-7 col-sm-push-3">
+                            <label for="inputDNI">DNI</label>
+                            <input type="text" class="form-control" id="inputDNI">
+                        </div>
+
+                        <div class="form-group col-sm-7 col-sm-push-3">
+                            <label for="inputDataNaixement">Data Naixement</label>
+                            <input type="date" class="form-control" id="inputDataNaixement">
+                        </div>
+
+                        <div class="form-group col-sm-7 col-sm-push-3">
+                            <label for="inputNacionalitat">Nacionalitat</label>
+                            <input type="text" class="form-control" id="inputNacionalitat">
+                        </div>
+
+                        <div class="form-group col-sm-7 col-sm-push-3">
+                            <label for="inputLlocNaixement">Lloc naixement</label>
+                            <input type="text" class="form-control" id="inputLlocNaixement">
+                        </div>
+
+                        <div class="form-group col-sm-7 col-sm-push-3">
+                            <label for="inputNumeroSeguretatSocial">Numero seguretat social</label>
+                            <input type="text" class="form-control" id="inputNumeroSeguretatSocial">
+                        </div>
+
+                        <div class="form-group col-sm-7 col-sm-push-3">
+                            <label for="inputCorreuElectronic">Correu electronic</label>
+                            <input type="email" class="form-control" id="inputCorreuElectronic">
+                        </div>
+
+                        <div class="form-group col-sm-7 col-sm-push-3">
+                            <label for="inputTelefon">Telefon</label>
+                            <input type="tel" class="form-control" id="inputTelefon">
+                        </div>
+
+                        <div class="form-group col-sm-7 col-sm-push-3">
+                            <label for="inputTelefonMobil">Telefon mobil</label>
+                            <input type="tel" class="form-control" id="inputTelefonMobil">
+                        </div>
+
+                        <div class="form-group col-sm-7 col-sm-push-3">
+                            <label for="inputDireccio">Adreça</label>
+                            <input type="text" class="form-control" id="inputDireccio">
+                        </div>
+
+                        <div class="form-group col-sm-7 col-sm-push-3">
+                            <button type="button" class="btn btn-default" onclick="generarArxiu()">Generar arxiu d'inici de sessio de professor</button>
+                        </div>
+
+                        
+                    </fieldset>
+                    <fieldset disabled="disabled" id="fieldSetButtonRealizarAccion">
+                        <div class="form-group col-sm-12 text-center">
+                            <button type="button" class="btn btn-default" onclick="realizarAccion()">Realizar accion</button>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+
+        
+
+        <div class="row top-buffer"> 
+            
+        <div class="container-fluid" id="containerMenuOpciones">
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <fieldset disabled="disabled" id="fieldSetOpciones">
+                        <div id="divBotonesOpciones" class="text-center">
+                            <button class="btnOpciones" onclick="cargarTutoriasProfessor()">Tutorias</button>
+                            <button class="btnOpciones" onclick="cargarAssignaturaProfessor()">Modulos</button>
+                        </div> 
+                    </fieldset>
+                </div>
+            </nav>
+
+            <!-- Div tutorias -->
+            <div class="row divsOpciones text-center" id="divTutoriaProfessor">
+                    <div class="form-group col-sm-4 col-sm-offset-1">
+                        <label for="selectAlumnosProfessor">Alumnos professor:</label>
+                        <select class="form-control" id="selectAlumnosProfessor" multiple>
+                        </select>
+                    </div> 
+                    <div class="col-sm-2" id="divBotonesMantenimientoAlumnos">
+                        <button class="btn btn-default col-sm-12" onclick="anadirAlumno()">añadir</button>
+                        <button class="btn btn-default col-sm-12" onclick="eliminarAlumno()">eliminar</button>
+                    </div>
+                    <div class="form-group col-sm-4">
+                        <label for="selectTotsAlumnes">Todos los alumnos:</label>
+                        <select class="form-control" id="selectTotsAlumnes" multiple>
+                            
+                        </select>
+                    </div> 
+                </div>
+
+            <!-- Div Assignatura -->
+            <div class="row divsOpciones text-center" id="divAssignaturaProfessor">
+                <div class="form-group col-sm-4 col-sm-offset-1">
+                    <label for="selectAssignaturaAlumne">Assignatures professor:</label>
+                    <select class="form-control" id="selectAssignaturaProfessor" multiple>
+                    </select>
+                </div> 
+                <div class="col-sm-2" id="divBotonesMantenimientoAssignatura">
+                    <button class="btn btn-default col-sm-12" onclick="anadirAssignatura()">Afegir</button>
+                    <button class="btn btn-default col-sm-12" onclick="eliminarAssignatura()">Eliminar</button>
+                </div>
+                <div class="form-group col-sm-4">
+                    <label for="selectTotsProfessor">Totes les assignatures:</label>
+                    <select class="form-control" id="selectTotsAssignatura" multiple>
+                        
+                    </select>
+                </div> 
+            </div>
+        </div>
+		<footer>
+			
+        </footer>
+        
+        <script src="../js/scriptMantenimientoProfessors.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<script src="../js/bootstrap.min.js"></script>
+	</body>
+</html>

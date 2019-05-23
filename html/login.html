@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/loginStyle.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <title>Login EducaBasic</title>
+</head>
+<body>
+
+    <div class="container" id="containerPrincipal">
+        <div class="row text-center">
+            <img id="icon" src="../Imagenes/logo.jpg" onmousedown="return false" alt="">
+        </div>
+        <div class="row top-buffer"> 
+        <div class="row text-center">
+            <!-- Formulario de inicio de session -->
+            <form action="" method="POST" id="formInicioSession">
+                <div class="inner-addon left-addon form-group">
+                    <span class="fas fa-user"></span>
+                    <label for="usuario" class="sr-only">Usuario</label>
+                    <input type="text" class="form-control" id="usuario" aria-describedby="usuario" placeholder="Usuario">
+                </div>
+                <div class="inner-addon left-addon form-group">
+                    <span class="fas fa-key"></span>
+                    <label for="contrasena" class="sr-only">Contraseña</label>
+                    <input type="password" class="form-control" id="contrasena" aria-describedby="contrasena" placeholder="Contraseña">
+                </div>
+                <p><a id="linkContrasenaOlvidada" onclick="contrasenaOlvidada()">He olvidado la contraseña</a></p>
+                <button type="button" class="btn btn-default" onclick="IniciarSesion()">Iniciar sesion</button>
+            </form>
+
+            <!-- Formulario de Introducir archivo professor -->
+            <form action="../php/LoginFunciones.php" method="POST" enctype="multipart/form-data" id="formArchivoProfessor" class="formulariosInvisibles">
+                <h2 class="text-center">Introduce el archivo de inicio de session</h2>
+                <div class="form-group">
+                    <input type="file" name="archivoSession" id="archivoSession" class="form-control">
+                </div>
+                
+                <button type="button" class="btn btn-default" name="comprovarArchivo" onclick="comprovarArxiu()">Comprobar Archivo</button>
+                <button type="button" class="btn btn-default" onclick="volverInicio()">Cancelar accion</button>
+            </form>
+
+            <!-- Formulario introducir codigoRecuperacion -->
+            <form action="" method="POST" enctype="multipart/form-data" id="formCodigoRecuperacion" class="formulariosInvisibles">
+                <h2 class="text-center">Introduce el codigo que se te ha enviado por correo</h2>
+                <div class="form-group">
+                    <input type="text" id="codigoRecuperacion" class="form-control" placeholder="Codigo recuperacion">
+                </div>
+                <button type="button" class="btn btn-default" onclick="comprovarCodigoRecuperacion()">Comprobar codigo de recuperacion</button>
+                <button type="button" class="btn btn-default" onclick="volverInicio()">Cancelar accion</button>
+            </form>
+
+            <!-- Formulario introducir nueva contraseña -->
+            <form action="" method="POST" enctype="multipart/form-data" id="formNuevaContrasena" class="formulariosInvisibles">
+                <h2 class="text-center">Introduce la nueva contraseña</h2>
+                <div class="form-group">
+                    <label for="contrasenaNuevaPrimera">Nueva contraseña</label>
+                    <input type="text" id="contrasenaNuevaPrimera" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="contrasenaNuevaSegunda">Vuelve a introducir la nueva contraseña</label>
+                    <input type="text" id="contrasenaNuevaSegunda" class="form-control">
+                </div>
+                <button type="button" class="btn btn-default" onclick="cambiarContrasena()">Cambiar contraseña</button>
+                <button type="button" class="btn btn-default" onclick="volverInicio()">Cancelar accion</button>
+            </form>
+        </div>
+    </div>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="../js/ScriptsLogin.js"></script>
+</body>
+</html>
